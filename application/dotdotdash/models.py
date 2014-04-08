@@ -142,3 +142,34 @@ class Contact(models.Model):
 		verbose_name_plural = "Contact"
 	contant = models.TextField(max_length=4000)
 	backgroundimage = models.ForeignKey(MediaNode,blank=True,null=True,related_name="bkimg+")
+
+
+class Project(models.Model):
+	class Meta:
+		verbose_name = 'Presentation Project'
+	title = models.CharField(max_length=600)
+	slug = models.SlugField(blank=True)
+	clientimages = models.ManyToManyField(MediaNode)
+	# order = models.IntegerField(default=99)
+
+	def save(self,*args, **kwargs):
+		self.slug = slugify(self.title)
+		super(Project, self).save(*args, **kwargs)
+
+	def __unicode__(self):
+		return self.title
+
+class PersonalizedPage(models.Model):
+	class Meta:
+		verbose_name = 'Presentation Page'
+	title = models.CharField(max_length=600)
+	slug = models.SlugField(blank=True)
+	textBlock = models.TextField(max_length=4000, blank=True)
+	projects = models.ManyToManyField(Project)
+
+	def save(self,*args, **kwargs):
+		self.slug = slugify(self.title)
+		super(PersonalizedPage, self).save(*args, **kwargs)
+
+	def __unicode__(self):
+		return self.title

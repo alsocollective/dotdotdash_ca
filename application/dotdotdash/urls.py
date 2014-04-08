@@ -25,4 +25,5 @@ urlpatterns = patterns('',
     url(r'^clients/$', 'dotdotdash.views.clients'),
     url(r'^work/$', 'dotdotdash.views.work'),
     url(r'^works/(?P<project>[\w|\W]+)/$', 'dotdotdash.views.works'),
+    url(r'^(?P<project>[\w|\W]+)/$', 'dotdotdash.views.project'),
 )

@@ -1,4 +1,5 @@
 from django.shortcuts import render_to_response, get_object_or_404
+from django.http import Http404
 from dotdotdash.models import *
 
 def home(request):
@@ -150,5 +151,36 @@ def work(request):
 
 def works(request,project=None):
 	return render_to_response('mobile/works.html',	getContentOfPages(project))
+
+
+
+
+
+
+
+def project(request,project=None):
+	if( not project):
+		return Http404
+
+	proOut = None;
+
+	try:
+		proOut = PersonalizedPage.objects.filter(slug = project)[0]
+	except IndexError:
+		raise Http404
+	projects = proOut.projects.all()
+
+	out = []
+	for pro in projects:
+		obj = {"title":pro.title,"slug":pro.slug,"imgs":[]}
+		imagelist = pro.clientimages.all()
+		for img in imagelist:
+			obj["imgs"].append(img);
+		out.append(obj)
+
+	return render_to_response('personalizedPage.html',{"project":proOut,"projects":out})
+
+
+
 
 

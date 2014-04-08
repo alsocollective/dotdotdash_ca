@@ -50,3 +50,6 @@ admin.site.register(MediaNode,mediaAdmin)
 admin.site.register(Work,workAdmin)
 admin.site.register(Page,pageAdmin)
 admin.site.register(Contact)
+
+admin.site.register(Project)
+admin.site.register(PersonalizedPage)
