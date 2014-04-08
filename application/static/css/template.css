@@ -1,0 +1,98 @@
+.text-container{
+	width: 75%;
+	margin: 0 auto 0 auto;
+}
+.text-container p{
+	font-size: 1em;
+	line-height: 1.3em;
+}
+
+.table{
+	display: table;
+	min-height: inherit;
+	height: 100%;
+}
+
+.center{
+	display: table-cell;
+	vertical-align: middle;
+	text-align: center;
+}
+
+.center p{
+	text-align: left;
+}
+
+.center div {
+	background-color: #fff;
+	background-color: rgba(255,255,255,0.8);
+	padding: 1em;
+}
+
+.backgroundImage{
+	z-index: 0;
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background-position:center;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	padding: 0;
+	z-index: -1;
+}
+
+.make-forth{
+	width: 50%;
+	height: 50%;
+	display: inline-block;
+}
+
+.pdf{
+	display: table;
+	height: 400px;
+	width: 75%;
+	text-align: center;
+	background-position:center;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	margin: 0 auto 0 auto;
+}
+
+.pdf a{
+	display: table-cell;
+	vertical-align: middle;
+	opacity: 1;
+	
+	font-size: 2em;
+	font-family: 'Montserrat', sans-serif;
+	padding: 0.5em;
+	
+	-webkit-transition:all 1s ease;
+	-moz-transition:all 1s ease;
+	transition:all 1s ease;
+}
+.pdf:hover a{
+	opacity: 0.5;
+	color: #248183;
+}
+.sins{
+	height: 100%;
+	text-align: center;
+}
+.sins img{
+	margin-top: 10%;
+	width: auto;
+	max-width: 100%;
+	max-height: 70%;
+}
+.sins iframe{
+	width: 80%;
+	height: 80%;
+	margin: 5%;
+}

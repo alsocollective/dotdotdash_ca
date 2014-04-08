@@ -1,0 +1,71 @@
+{% extends "mobile/base.html" %}
+
+{% block content %}
+<style type="text/css">
+	.background{
+		background-image: url("http://also-static.com/dotdotdash/uploads/{{services.image}}");
+	}
+</style>
+
+<section id="services">
+
+<div class="space-from-top">
+	<h1>Services</h1>
+	{{services.text|safe}}
+</div>
+
+<div class="service-image">
+	<img src="http://also-static.com/dotdotdash/assets/social.png">
+</div>
+<div class="servicesContainer">
+	<h3>Social Media and Strategy Planning</h3>
+	{{smsp.text|safe}}
+</div>
+
+<div class="service-image">
+	<img src="http://also-static.com/dotdotdash/assets/branding.png">
+</div>
+<div class="servicesContainer">
+	<h3>Branding</h3>
+	{{branding.text|safe}}
+</div>
+
+<div class="service-image">
+	<img src="http://also-static.com/dotdotdash/assets/research.png">
+</div>
+<div class="servicesContainer">
+	<h3>Research</h3>
+	{{research.text|safe}}
+</div>
+
+<div class="service-image">
+	<img src="http://also-static.com/dotdotdash/assets/creative.png">
+</div>
+<div class="servicesContainer">
+	<h3>Creative Development</h3>
+	{{creativedev.text|safe}}
+</div>
+
+<div class="service-image">
+	<img src="http://also-static.com/dotdotdash/assets/content.png">
+</div>
+<div class="servicesContainer">
+	<h3>Content Production</h3>
+	{{contentproduction.text|safe}}
+</div>
+
+<div class="service-image">
+	<img src="http://also-static.com/dotdotdash/assets/analytics.png">
+</div>
+<div class="servicesContainer">
+	<h3>Results Analytics</h3>
+	{{resultsanalytics.text|safe}}
+</div>
+
+</section>
+
+{% endblock %}
+
+{% block services %}
+	active-link
+{%endblock%}

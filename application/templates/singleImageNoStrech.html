@@ -1,0 +1,12 @@
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static "static/css/template.css"%}">
+	{%if content.video%}
+	<div class="text-container table">
+		<div class="center"><div class="pdf" style='background-image: url("{% static ""%}/uploads/{{content.media.0.location}}");'><a id="{{content.slug}}" href="#" target="_blank" onclick="loadVideo(event,'{{content.slug}}','{{content.video}}');"><img src="{% static "/assets/play.png"%}" width="100px" height="auto"></a></div></div>
+	</div>
+	{%else%}
+	<div class="sins">
+
+		<img src="{% static ""%}/uploads/{{content.media.0.location}}">
+	</div>
+	{%endif%}

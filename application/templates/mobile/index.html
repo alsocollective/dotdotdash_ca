@@ -1,0 +1,45 @@
+{% extends "mobile/base.html" %}
+
+{% block content %}
+<style type="text/css">
+	.background{
+		background-image: url("http://also-static.com/dotdotdash/uploads/{{bkimg}}");
+	}
+</style>
+
+
+<div class="space-from-top">
+	<img class="logo" src="http://also-static.com/dotdotdash/assets/logo.png">
+	<h1 class="quote">
+		{{q1|safe}}
+	</h1>
+	<h1 class="quote hidden">
+		{{q2|safe}}
+	</h1>
+</div>
+
+<div class="contact-info">
+	{{contact|safe}}
+</div>
+
+
+<script type="text/javascript">
+	window.onload = function() {
+		var quotes = $(".quote");
+		var displayed = false;
+		quotes.each(function(index){
+			// if(Math.random()>1/quotes.length && !displayed){
+			// 	console.log("displayed",quotes[index]);
+			// 	displayed = true;
+			// }
+			// if(index == quotes.length-1 && !displayed){
+			// 	console.log("displayed",quotes[index]);
+			// }
+		});
+	}
+</script>
+{% endblock %}
+
+{% block home %}
+	active-link
+{%endblock%}

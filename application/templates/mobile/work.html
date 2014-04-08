@@ -1,0 +1,46 @@
+{% extends "mobile/base.html" %}
+
+{% block content %}
+<style type="text/css">
+	.background{
+		background-image: none;
+	}
+</style>
+
+<section class="work-scection">
+	<div class="space-from-top">
+		<h1>Work</h1>
+	{% for project in work%}{%if project.sos%}{%else%}
+	<a href="/works/{{project.slug}}/" class="project">
+		<h2>{{project.title}}</h2>
+		<h3>{{project.subtitle}}</h3>
+		<p>
+			{{project.description|safe}}
+		</p>
+		<br>
+	</a>
+	{%endif%}{% endfor %}
+	</div>
+
+	<div class="space-from-top">
+		<h1><img src="http://also-static.com/dotdotdash/assets/sos-logo.png"></h1>
+		<h1>Projects</h1>
+	{% for project in work%}{%if project.sos%}
+	<a href="/works/{{project.slug}}/" class="project">
+		<h2>{{project.title}}</h2>
+		<h3>{{project.subtitle}}</h3>
+		<p>
+			{{project.description|safe}}
+		</p>
+		<br>
+	</a>
+	{%endif%}{% endfor %}
+	</div>
+
+</section>
+{% endblock %}
+
+{% block work %}
+	active-link
+{%endblock%}
+
