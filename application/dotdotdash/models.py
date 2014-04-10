@@ -1,5 +1,6 @@
 from django.db import models
 from django.template.defaultfilters import slugify
+from settings import SITE_ROOT
 import os.path
 
 
@@ -16,7 +17,7 @@ class MediaNode(models.Model):
 		fname, dot, extension = filename.rpartition('.')
 		slug = slugify(fname)
 		instance.title = '%s.%s' % (slug, extension)
-		return 'static/uploaded/%s.%s' % (slug, extension)
+		return '%s.%s' % (slug, extension)
 
 	location = models.FileField(upload_to=slugify_filename)
 
@@ -31,7 +32,7 @@ class MediaNode(models.Model):
 
 	def admin_image(self):
 		if self.title:
-			return '<img style="width:200px;height:auto;" src="/static/uploaded/%s"/>' % self.title
+			return '<img style="width:200px;height:auto;" src="http://also-static.com/dotdotdash/uploaded/%s"/>' % self.title
 		return "not an image"
 	admin_image.allow_tags = True
 
