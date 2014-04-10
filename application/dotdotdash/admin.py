@@ -33,7 +33,7 @@ class mediaAdmin(admin.ModelAdmin):
 		(None,{'fields':['location','link']}),
 		('Advance options', {
 			'classes':('collapse',),
-			'fields':('description','title','order'),
+			'fields':('description','title','order','vimeo'),
 			}),
 	]
 
@@ -41,6 +41,9 @@ class workAdmin(admin.ModelAdmin):
 	list_display = ('title','order',"is_a_sos_project")
 	filter_horizontal = ("pages",)
 	fieldsets = [(None,{'fields':[("title","subTitle"),"description",("order","is_a_sos_project"),"pages"]})]
+
+class ProjectAdmin(admin.ModelAdmin):
+	filter_horizontal = ("clientimages",)
 
 admin.site.register(Home)
 admin.site.register(About)
@@ -51,5 +54,5 @@ admin.site.register(Work,workAdmin)
 admin.site.register(Page,pageAdmin)
 admin.site.register(Contact)
 
-admin.site.register(Project)
+admin.site.register(Project,ProjectAdmin)
 admin.site.register(PersonalizedPage)

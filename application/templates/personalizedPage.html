@@ -53,7 +53,7 @@
 	h1{
 		font-size: 3em;
 		padding: 50px 0% 21px 0%;
-		text-align: center;
+		text-align: left;
 	}
 	h2{
 		padding-left: 5px;
@@ -93,7 +93,7 @@
 		max-width: 900px;
 		margin: 0 auto;
 	}
-/*	#container > div{
+	/*	#container > div{
 		box-shadow: 0 15px 39px -27px #000;
 	}*/
 
@@ -114,10 +114,44 @@
 		overflow: hidden;
 		list-style-type: none;
 	}
-	img{
+	.full-width-image{
 		padding: 25px 0;
 		width: 100%;
 	}
+	.video-background{
+		/*position: absolute;*/
+		left: 0;
+		top: 0;
+	}
+	.video{
+		position: relative;
+		text-align: center;
+		width: 100%;
+		display: block;
+	}
+	.video >div {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		display: table;
+	}
+	.video > div > div{
+		display: table-cell;
+		width: 100%;
+		height: 100%;
+		vertical-align: middle;
+		text-align: center;
+	}
+	.clicker{
+		position: absolute;
+		vertical-align: middle;
+	}
+	.sins{
+		vertical-align: top !important;
+	}
+
 	li:first-child img{
 		padding-top: 0px;
 	}
@@ -137,6 +171,7 @@
 		background-color: #fff;
 		background: #fff;
 		display: table;
+		z-index: 99999;
 	}
 	#loading-screen > div{
 		display: table-cell;
@@ -169,13 +204,27 @@
 		<p>{{project.textBlock}}</p>
 	{% endif %}
 	{% for pro in projects %}
+
 		<div>
 			<h2>{{pro.title}}</h2>
 			<ul class="hideable">
-				{% for img in pro.imgs %}
+				{% for img in pro.media %}
+					{% if img.vimeo %}
 					<li>
-						<img src="{% static ""%}uploads/{{img}}">
+						<a href="{{img.vimeo}}" class="video">
+							<img class="full-width-image" src="{% static ""%}uploads/{{img.location}}">
+							<div class="height-of-parent">
+								<div>
+									<img src="{% static "assets/play.png"%}">
+								</div>
+							</div>
+						</a>
 					</li>
+					{% else %}
+					<li>
+						<img class="full-width-image" src="{% static ""%}uploads/{{img.location}}">
+					</li>
+					{% endif %}
 				{% endfor %}
 			</ul>
 		</div>
@@ -199,10 +248,19 @@
 
 	$(window).mousewheel(stopScrollIfScrolling);
 	$(window).load(function(){
+		setHeightOfVidClick();
 		hideable.each(setHieghtAndHide);
+		$(".video").each(eachVideo);
 		showLoadingScreen();
 		scrolling = false;
 	});
+
+	function setHeightOfVidClick(){
+		$(".height-of-parent").each(setToHeightOfParent);
+	}
+	function setToHeightOfParent(index,el){
+		el.style.height = $(el.parentNode).height();
+	}
 
 	function setHieghtAndHide(index,el){
 		var myEl = $(el);
@@ -213,11 +271,14 @@
 
 	function toggleNoHeight(event){
 		var myEl = $($(this).find(".hideable")[0]);
-		if(myEl.hasClass('noheight')){
-			addHeight(myEl);
-		} else {
-			removeHeight(myEl);
-		}
+		// if(myEl.hasClass('noheight')){
+		// 	// addHeight(myEl);
+			
+		// } /*else {
+		// 	removeHeight(myEl);
+		// }*/
+		ScrollTo(myEl);
+		myEl.toggleClass('noheight');
 	}
 	function addHeight(myEl){
 		hideable.addClass('noheight');
@@ -231,7 +292,7 @@
 			$('html, body').animate({scrollTop: el.offset().top}, 1000,function(){
 				scrolling = false;
 			});
-		},750);
+		},/*750*/0);
 	}
 	function removeHeight(el){
 		hideable.addClass('noheight');
@@ -250,6 +311,57 @@
 			return false;
 		}
 	}
+
+	function eachVideo(index,el){
+		$(el).click(loadVideo);
+	}
+
+	function loadVideo(event){
+		if(event.preventDefault) event.preventDefault();
+		event.returnValue = false;
+		var parentElement = document.createElement("div");
+		parentElement.id = "vimeo-container";
+		$(parentElement).click(function(){
+			this.parentNode.removeChild(this);
+		});
+
+		this.appendChild(parentElement);
+
+		var sins = document.createElement("div");
+		sins.className = "sins";
+		parentElement.appendChild(sins);
+
+		var iframe = document.createElement("iframe");
+		iframe.src = removeHTTP(this.href);
+		iframe.setAttribute("webkitAllowFullScreen","");
+		iframe.setAttribute("mozallowfullscreen","");
+		iframe.setAttribute("allowFullScreen","");
+		iframe.setAttribute("frameborder","0");
+		iframe.setAttribute("width","100%");
+		iframe.style.height = $(this).height();
+		sins.appendChild(iframe);
+
+
+		return false;
+	}
+
+	function removeHTTP(stringin){
+		console.log(stringin);
+		if(stringin.indexOf("http:") === 0){
+			console.log(stringin.substring(5));
+			return stringin.substring(5);
+		}
+		return stringin;
+	}
+
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	ga('create', 'UA-42487410-1', 'dotdotdash.ca');
+	ga('send', 'pageview');
+
 </script>
 
 </body>

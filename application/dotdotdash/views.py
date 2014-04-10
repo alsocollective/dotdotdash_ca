@@ -172,10 +172,13 @@ def project(request,project=None):
 
 	out = []
 	for pro in projects:
-		obj = {"title":pro.title,"slug":pro.slug,"imgs":[]}
-		imagelist = pro.clientimages.all()
-		for img in imagelist:
-			obj["imgs"].append(img);
+		obj = {"title":pro.title,"slug":pro.slug}
+		# imagelist = 
+		# for img in imagelist:
+		# 	for key in img.keys():
+		# 		print key
+		# 	obj["imgs"].append(img);
+		obj.update(getImages(pro.clientimages.all()))
 		out.append(obj)
 
 	return render_to_response('personalizedPage.html',{"project":proOut,"projects":out})

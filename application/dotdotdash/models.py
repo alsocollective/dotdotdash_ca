@@ -10,7 +10,7 @@ class MediaNode(models.Model):
 	title = models.CharField(max_length=600,blank=True)
 	description = models.CharField(max_length=300, blank=True)
 	link = models.URLField(max_length=1000, blank=True);
-	vimeo = models.URLField(max_length=1000, blank=True);
+	vimeo = models.CharField(max_length=1000, blank=True);
 	order = models.IntegerField(blank=True,default=0)
 
 	def slugify_filename(instance, filename):
