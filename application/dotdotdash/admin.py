@@ -44,6 +44,16 @@ class workAdmin(admin.ModelAdmin):
 
 class ProjectAdmin(admin.ModelAdmin):
 	filter_horizontal = ("clientimages",)
+	list_display = ('title','order')
+	fieldsets = [
+		(None,{'fields':[('title','order'),'clientimages','slug']})
+	]
+
+class perPage(admin.ModelAdmin):
+	filter_horizontal = ("projects",)
+	list_display = ('title','slug')
+
+
 
 admin.site.register(Home)
 admin.site.register(About)
@@ -55,4 +65,4 @@ admin.site.register(Page,pageAdmin)
 admin.site.register(Contact)
 
 admin.site.register(Project,ProjectAdmin)
-admin.site.register(PersonalizedPage)
+admin.site.register(PersonalizedPage,perPage)
