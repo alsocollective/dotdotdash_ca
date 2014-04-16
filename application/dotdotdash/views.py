@@ -168,7 +168,7 @@ def project(request,project=None):
 		proOut = PersonalizedPage.objects.filter(slug = project)[0]
 	except IndexError:
 		raise Http404
-	projects = proOut.projects.all()
+	projects = proOut.projects.order_by('order').all()
 
 	out = []
 	for pro in projects:

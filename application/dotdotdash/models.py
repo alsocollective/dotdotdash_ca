@@ -151,7 +151,7 @@ class Project(models.Model):
 	title = models.CharField(max_length=600)
 	slug = models.SlugField(blank=True)
 	clientimages = models.ManyToManyField(MediaNode)
-	# order = models.IntegerField(default=99)
+	order = models.IntegerField(default=99, blank=True)
 
 	def save(self,*args, **kwargs):
 		self.slug = slugify(self.title)
