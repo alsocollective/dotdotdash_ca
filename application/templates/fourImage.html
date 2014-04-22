@@ -1,5 +1,5 @@
 {% load staticfiles %}
 <link rel="stylesheet" type="text/css" href="{% static "static/css/template.css"%}">
 {%for image in content.media%}<div class="make-forth">
-	<div class="backgroundImage" style='background-image: url({% static ""%}/uploads/{{image.location}}");'></div>
+	<div class="backgroundImage" style='background-image: url({% static ""%}uploads/{{image.location}});'></div>
 </div>{% endfor %}

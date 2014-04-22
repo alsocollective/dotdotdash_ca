@@ -54,7 +54,7 @@ def getClients():
 	return clientsout
 
 def getWork():
-	work = Work.objects.order_by('order').all()
+	work = Work.objects.order_by('order').prefetch_related("image","pages").all()
 	workout = []
 	for project in work:
 		workout.append({
@@ -62,10 +62,16 @@ def getWork():
 			"slug":project.slug,
 			"subtitle":project.subTitle,
 			"description":project.description,
+			"image":getWorkImage(project.image.all()),
 			"pages":getPages(project.pages.order_by('order').all()),
 			"sos":project.is_a_sos_project,
 			})
 	return workout
+
+def getWorkImage(imageList):
+	if(len(imageList)>0):
+		return imageList[0]
+	return None
 
 def getPages(wlist):
 	pages = []

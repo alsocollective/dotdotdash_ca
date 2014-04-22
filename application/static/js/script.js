@@ -1,5 +1,7 @@
-
-console.log("setting up initial call for youtube");
+//On load run this code
+$(window).load(function(){
+	fadeloading();
+});
 
 var myPlayer = $("#youtube-player").Jtube({
 		videoId:"1PxQj_HiQjo",
@@ -13,7 +15,7 @@ var myPlayer = $("#youtube-player").Jtube({
 		vidHeight:"100%",
 		vidWidth:"100%",
 		volume:0,
-		debugMode:true,
+		debugMode:false,
 		fallbackImage:"http://also-static.com/dotdotdash/uploads/bk-vid-img-opt.jpg",
 
 		onLoaded:function(){
@@ -26,7 +28,6 @@ var myPlayer = $("#youtube-player").Jtube({
 			if(settings.debugMode){
 				console.log("start");
 			}
-			// $(settings.player.a).fadeIn('fast');
 			$(settings.player.a).css({"display":"inline-block"})
 			return null;
 		},
@@ -34,7 +35,6 @@ var myPlayer = $("#youtube-player").Jtube({
 			if(settings.debugMode){
 				console.log("pause");
 			}
-			// $(settings.player.a).fadeOut('fast');
 			$(settings.player.a).css({"display":"none"})
 			return null;
 		}
@@ -57,100 +57,105 @@ $("#stickNav").waypoint('sticky');
 
 
 //scrolling effect for nav
-softScroll("aboutLink","about");
-softScroll("serviceLink","services");
-softScroll("clientsLink","clients");
-softScroll("ourWorkLink","work");
-softScroll("contactLink","contact");
-softScroll("contactLinktwo","contact");
+	softScroll("aboutLink","about");
+	softScroll("serviceLink","services");
+	softScroll("clientsLink","clients");
+	softScroll("ourWorkLink","work");
+	softScroll("contactLink","contact");
+	softScroll("contactLinktwo","contact");
 
 //fading quotes
-var fadingElement = [
-	new FadeingObject("quote1"),
-	new FadeingObject("quote2")
-];
-console.log("set up a bunch of other things");
-var scrollLocation = $(document).scrollTop();
+	var fadingElement = [
+		new FadeingObject("quote1"),
+		new FadeingObject("quote2")
+	];
+	var scrollLocation = $(document).scrollTop();
 
-function fadingResized(){
-	for(var a = 0; a < fadingElement.length; ++a){
-		fadingElement[a].resized();
-		fadingElement[a].makeFade(scrollLocation,200);
+	function fadingResized(){
+		for(var a = 0; a < fadingElement.length; ++a){
+			fadingElement[a].resized();
+			fadingElement[a].makeFade(scrollLocation,200);
+		}
 	}
-}
-fadingResized();
-$(window).scroll(function(){
-	scrollLocation = $(document).scrollTop();
-	for(var a = 0; a < fadingElement.length; ++a){
-		fadingElement[a].makeFade(scrollLocation,200);
-	}
-});
+	fadingResized();
+	$(window).scroll(function(){
+		scrollLocation = $(document).scrollTop();
+		for(var a = 0; a < fadingElement.length; ++a){
+			fadingElement[a].makeFade(scrollLocation,200);
+		}
+	});
 
-var serviceSection= $(".servicesection");
-var serviceBackgrounds = $("#servicebackgrounds").children();
-var windowHeight = $(window).height();
-document.getElementById('servicebackgrounds').style.height = windowHeight;
+//Service section
+	var serviceSection= $(".servicesection"),
+		serviceBackgrounds = $("#servicebackgrounds").children(),
+		windowHeight = $(window).height(),
+		buttons = $("#buttoncontainer").children(),
+		buttonsClicked = false;
+
+	document.getElementById('servicebackgrounds').style.height = windowHeight;
+
+	buttons.click(function(event){
+		event.preventDefault();
+		hideServicesBut(this);
+	});
+
+	function bttonsHeight(){
+		var bkImages = $(".backgroundImage");
+		windowHeight = $(window).height();
+		bkImages.each(function(index){
+			bkImages[index].style.height = windowHeight+"px";
+		});
+	}
+
+	function hideServicesBut(thisEl){
+		var first = true;
+		serviceSection.each(function(index){
+			if(serviceSection[index].id === thisEl.id){
+				if($(serviceSection[index]).hasClass("textnoshow")){
+					if(first && buttonsClicked){
+						console.log(serviceBackgrounds[index])
+						$(serviceBackgrounds[index]).fadeIn(0);
+						first = false;
+					} else {
+						console.log(serviceBackgrounds[index])
+						$(serviceBackgrounds[index]).fadeIn(500);
+						if(!buttonsClicked){
+							buttonsClicked = true;
+						}
+					}
+				}
+
+				$(serviceSection[index]).removeClass("textnoshow");
+			} else if(!$(serviceSection[index]).hasClass("textnoshow")){
+				$(serviceSection[index]).addClass("textnoshow");
+				if(first){
+					setTimeout(function(){
+						console.log(serviceBackgrounds[index])
+						$(serviceBackgrounds[index]).fadeOut(0);
+					},1000);
+					first = false;
+				} else {
+					console.log(serviceBackgrounds[index])
+					$(serviceBackgrounds[index]).fadeOut(500);
+				}
+			}
+		});
+	}
 
 $(window).bind("resize",function(){
 	bttonsHeight();
 	fadingResized();
 	document.getElementById('servicebackgrounds').style.height = windowHeight;
-
 });
 
-for(var a =0; a < serviceBackgrounds.length; ++a){
-	serviceBackgrounds[a] = $(serviceBackgrounds[a]).children()[0];
-}
 
-var buttons = $("#buttoncontainer").children();
-var buttonsClicked = false;
-
-buttons.each(function(index){
-	$(buttons[index]).click(function(event){
-		event.preventDefault();
-		hideServicesBut(this);
-	});
-
-});
-
-function bttonsHeight(){
-	var bkImages = $(".backgroundImage");
-	windowHeight = $(window).height();
-	bkImages.each(function(index){
-		bkImages[index].style.height = windowHeight+"px";
+// fade loading screen
+function fadeloading(){
+	$("#loading").fadeOut('fast', function() {
+		this.parentNode.removeChild(this);
 	});
 }
 
-function hideServicesBut(thisEl){
-	var first = true;
-	serviceSection.each(function(index){
-		if(serviceSection[index].id === thisEl.id){
-			if($(serviceSection[index]).hasClass("textnoshow")){
-				if(first && buttonsClicked){
-					$(serviceBackgrounds[index]).fadeIn(0);
-					first = false;
-				} else {
-					$(serviceBackgrounds[index]).fadeIn(500);
-					if(!buttonsClicked){
-						buttonsClicked = true;
-					}
-				}
-			}
-
-			$(serviceSection[index]).removeClass("textnoshow");
-		} else if(!$(serviceSection[index]).hasClass("textnoshow")){
-			$(serviceSection[index]).addClass("textnoshow");
-			if(first){
-				setTimeout(function(){
-					$(serviceBackgrounds[index]).fadeOut(0);
-				},1000);
-				first = false;
-			} else {
-				$(serviceBackgrounds[index]).fadeOut(500);
-			}
-		}
-	});
-}
 
 
 
@@ -213,10 +218,14 @@ function FadeingObject(element){
 	};
 }
 
-
+var projectOpened = false;
 $(".project").click(function(event){
 	scrolllocation = $(window).scrollTop();
 	event.preventDefault();
+	if(projectOpened){
+		return false;
+	}
+	projectOpened = true;
 	//works defined in the django loop
 	var workToShow = works[this.id];
 
@@ -238,6 +247,7 @@ $(".project").click(function(event){
 		setTimeout(function(){
 			rsSlider.parentNode.removeChild(rsSlider);
 			backButton.parentNode.removeChild(backButton);
+			projectOpened = false;
 		},1000);
 	});
 	document.body.appendChild(backButton);
@@ -277,8 +287,6 @@ $(".project").click(function(event){
 			navigateByClick:false
 		});
 	});
-
-
 });
 
 
@@ -308,3 +316,4 @@ function loadVideo(event, parentID, videoLink){
 	iframe.setAttribute("height","281");
 	sins.appendChild(iframe);
 }
+

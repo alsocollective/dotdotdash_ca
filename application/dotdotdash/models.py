@@ -130,6 +130,7 @@ class Work(models.Model):
 	slug = models.SlugField(blank=True)
 	order = models.IntegerField(blank=True,default=1)
 	is_a_sos_project = models.BooleanField(blank=True)
+	image = models.ManyToManyField(MediaNode,blank=True)
 
 	def save(self,*args, **kwargs):
 		self.slug = slugify(self.title)
