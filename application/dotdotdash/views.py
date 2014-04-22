@@ -27,7 +27,7 @@ def home(request):
 
 def getHome():
 	home = Home.objects.all()[0]
-	homeout = {"q1":home.quote1,"q2":home.quote2,"mp4":home.mp4,"ogv":home.ogv,"webm":home.webm,"bkimg":home.workbackgroundimage}
+	homeout = {"q1":home.quote1,"q2":home.quote2,"youid":home.youtubeId,"bkimg":home.workbackgroundimage}
 	return homeout
 
 def getAbout():

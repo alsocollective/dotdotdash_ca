@@ -55,6 +55,7 @@ class Home(models.Model):
 	ogv = models.ForeignKey(MediaNode,blank=True,null=True,related_name="ogv+")
 	webm = models.ForeignKey(MediaNode,blank=True,null=True,related_name="webm+")
 	workbackgroundimage = models.ForeignKey(MediaNode,blank=True,null=True,related_name="bkimg+")
+	youtubeId = models.CharField(max_length=100,blank=True)
 
 class About(models.Model):
 	class Meta:

@@ -37,6 +37,23 @@ class mediaAdmin(admin.ModelAdmin):
 			}),
 	]
 
+
+
+class HomeAdmin(admin.ModelAdmin):
+	fieldsets = [
+		("Quotes",{'fields':['quote1','quote2']}),
+		("Video",{'fields':['workbackgroundimage','youtubeId']})
+	]
+
+
+
+
+
+
+
+
+
+
 class workAdmin(admin.ModelAdmin):
 	list_display = ('title','order',"is_a_sos_project")
 	filter_horizontal = ("pages","image")
@@ -55,7 +72,7 @@ class perPage(admin.ModelAdmin):
 
 
 
-admin.site.register(Home)
+admin.site.register(Home,HomeAdmin)
 admin.site.register(About)
 admin.site.register(Services)
 admin.site.register(Clients)

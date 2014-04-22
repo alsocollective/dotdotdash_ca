@@ -4,7 +4,7 @@ $(window).load(function(){
 });
 
 var myPlayer = $("#youtube-player").Jtube({
-		videoId:"1PxQj_HiQjo",
+		videoId:myvideo.videoId,
 		skipvid:false,
 		skipWhash:false,
 		timeLeft:false,
@@ -16,7 +16,7 @@ var myPlayer = $("#youtube-player").Jtube({
 		vidWidth:"100%",
 		volume:0,
 		debugMode:false,
-		fallbackImage:"http://also-static.com/dotdotdash/uploads/bk-vid-img-opt.jpg",
+		fallbackImage:myvideo.fallbackImage,
 
 		onLoaded:function(){
 			$('.backgroundImage').waypoint('sticky',{
