@@ -53,7 +53,8 @@ section{
 	}
 
 	.quote{
-		min-height: 80%;
+		min-height: 0;
+		padding-bottom: 24em;
 	}
 
 	#quote1 {
@@ -82,6 +83,11 @@ section{
 		text-align: center;
 		z-index: 3;
 	}
+
+	.second-quote{
+		padding-bottom: 6em;
+	}
+
 
 /*for layering of the content all ements must be relative to work*/
 	nav {
@@ -329,8 +335,6 @@ section{
 	.contact-columns {
 		width: 80%;
 		margin: 4em auto 2em auto;
-		border-top: solid 2px #fff;
-		border-bottom: solid 2px #fff;
 		padding: 2em 0 0em 0;
 	}
 
