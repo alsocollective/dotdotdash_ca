@@ -56,6 +56,8 @@ class Home(models.Model):
 	webm = models.ForeignKey(MediaNode,blank=True,null=True,related_name="webm+")
 	workbackgroundimage = models.ForeignKey(MediaNode,blank=True,null=True,related_name="bkimg+")
 	youtubeId = models.CharField(max_length=100,blank=True)
+	quote3 = models.TextField(max_length=1000)
+	quote4 = models.TextField(max_length=1000)
 
 class About(models.Model):
 	class Meta:
