@@ -41,7 +41,7 @@ class mediaAdmin(admin.ModelAdmin):
 
 class HomeAdmin(admin.ModelAdmin):
 	fieldsets = [
-		("Quotes",{'fields':['quote1','quote2']}),
+		("Quotes",{'fields':['quote1','quote2',"quote3","quote4"]}),
 		("Video",{'fields':['workbackgroundimage','youtubeId']})
 	]
 
