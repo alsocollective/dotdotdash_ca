@@ -268,7 +268,7 @@ $(".project").click(function(event){
 	$(rsSliderChildren[0]).load(workToShow["Links"][0],function(){
 		rsSlider.style.left = "0%";
 
-		backButton.style.left = "0";
+		// backButton.style.left = "0";
 
 		for(var a = 1; a < rsSliderChildren.length; ++a){
 			$(rsSliderChildren[a]).load(workToShow["Links"][a]);
