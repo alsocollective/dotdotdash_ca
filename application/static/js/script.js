@@ -238,11 +238,11 @@ $(".project").click(function(event){
 
 	var backButton = document.createElement("a");
 	backButton.innerHTML = "Back";
-	backButton.style.right = "100%";
+	backButton.style.right = "-100%";
 	backButton.id = "rsbackButton";
 	$(backButton).click(function(){
 		rsSlider.style.left = "100%";
-		backButton.style.right = "100%";
+		backButton.style.right = "-100%";
 		$(window).off("scroll",noscroll);
 		setTimeout(function(){
 			rsSlider.parentNode.removeChild(rsSlider);
