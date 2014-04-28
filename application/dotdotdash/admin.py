@@ -45,7 +45,8 @@ class HomeAdmin(admin.ModelAdmin):
 		("Video",{'fields':['workbackgroundimage','youtubeId']})
 	]
 
-
+class ClientsAdmin(admin.ModelAdmin):
+	filter_horizontal = ("clientimages",)
 
 
 
@@ -75,7 +76,7 @@ class perPage(admin.ModelAdmin):
 admin.site.register(Home,HomeAdmin)
 admin.site.register(About)
 admin.site.register(Services)
-admin.site.register(Clients)
+admin.site.register(Clients,ClientsAdmin)
 admin.site.register(MediaNode,mediaAdmin)
 admin.site.register(Work,workAdmin)
 admin.site.register(Page,pageAdmin)
