@@ -58,7 +58,7 @@ class ClientsAdmin(admin.ModelAdmin):
 class workAdmin(admin.ModelAdmin):
 	list_display = ('title','order',"is_a_sos_project")
 	filter_horizontal = ("pages","image")
-	fieldsets = [(None,{'fields':[("title","subTitle"),"description",("order","is_a_sos_project"),"pages","image"]})]
+	fieldsets = [(None,{'fields':[("title","subTitle","order"),"pages","image"]})]
 
 class ProjectAdmin(admin.ModelAdmin):
 	filter_horizontal = ("clientimages",)
