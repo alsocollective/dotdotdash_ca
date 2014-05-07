@@ -544,7 +544,7 @@ section{
 		padding: 0.6em 0 0 0;
 	}
 	#work * {
-		-webkit-transform-style: preserve-3d;
+/*		-webkit-transform-style: preserve-3d;
 		-moz-transform-style: preserve-3d;
 		-ms-transform-style: preserve-3d;
 		-o-transform-style: preserve-3d;
@@ -553,7 +553,7 @@ section{
 		-moz-backface-visibility: hidden;
 		-ms-backface-visibility: hidden;
 		-o-backface-visibility: hidden;
-		backface-visibility: hidden;
+		backface-visibility: hidden;*/
 
 	}
 	#work ul {
@@ -561,6 +561,7 @@ section{
 		padding: 0;
 		width: 100%;
 		background-color: #000;
+		text-align: left;
 	}
 
 	.project{
