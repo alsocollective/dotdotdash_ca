@@ -1,0 +1,15 @@
+{% load staticfiles %}
+	<link rel="stylesheet" type="text/css" href="{% static "static/css/template.css"%}">
+	<div class="text-container table makeabsolute">
+		<div class="center">
+			<img src="{% static ""%}/uploads/{{content.media.0.location}}">
+		</div>
+	</div>
+	<div class="text-container table makeabsolute">
+		<div class="center">
+			<a class="externallink" href="{{content.media.0.link}}" target="_blank">
+				{{content.text}}
+			</a>
+		</div>
+	</div>
+

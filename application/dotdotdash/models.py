@@ -187,6 +187,7 @@ class Page(models.Model):
 		("fourImage","fourImage"),
 		("imageWText","imageWText"),
 		("pdf","pdf"),
+		("linktoexternal","linktoexternal"),
 		("singleImageNoStrech","singleImageNoStrech")
 	)
 	title = models.CharField(max_length=600)
