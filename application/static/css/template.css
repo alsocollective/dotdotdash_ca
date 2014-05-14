@@ -109,4 +109,12 @@ a.externallink {
 	display: inline-block;
 	background-color: #fff;
 	padding: 1em;
+	-webkit-transition:all 1s ease;
+	-moz-transition:all 1s ease;
+	transition:all 1s ease;
 }
+
+a.externallink:hover{
+	background: #248183;
+}
+
