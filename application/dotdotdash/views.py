@@ -184,7 +184,7 @@ def project(request,project=None):
 		# 	for key in img.keys():
 		# 		print key
 		# 	obj["imgs"].append(img);
-		obj.update(getImages(pro.clientimages.all()))
+		obj.update(getImages(pro.clientimages.all().order_by("order")))
 		out.append(obj)
 
 	return render_to_response('personalizedPage.html',{"project":proOut,"projects":out})
