@@ -1,4 +1,5 @@
 {% extends "mobile/base.html" %}
+{% load staticfiles %}
 
 {% block content %}
 <style type="text/css">
@@ -10,32 +11,19 @@
 <section class="work-scection">
 	<div class="space-from-top">
 		<h1>Work</h1>
-	{% for project in work%}{%if project.sos%}{%else%}
+	{% for project in work%}
 	<a href="/works/{{project.slug}}/" class="project">
+		<div class="text-content">
 		<h2>{{project.title}}</h2>
 		<h3>{{project.subtitle}}</h3>
-		<p>
-			{{project.description|safe}}
-		</p>
-		<br>
+		</div>
+		<img src="{% static "uploads/"%}{{project.image}}">
+
 	</a>
-	{%endif%}{% endfor %}
+	{% endfor %}
 	</div>
 
-	<div class="space-from-top">
-		<h1><img src="http://also-static.com/dotdotdash/assets/sos-logo.png"></h1>
-		<h1>Projects</h1>
-	{% for project in work%}{%if project.sos%}
-	<a href="/works/{{project.slug}}/" class="project">
-		<h2>{{project.title}}</h2>
-		<h3>{{project.subtitle}}</h3>
-		<p>
-			{{project.description|safe}}
-		</p>
-		<br>
-	</a>
-	{%endif%}{% endfor %}
-	</div>
+
 
 </section>
 {% endblock %}

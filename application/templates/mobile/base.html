@@ -1,3 +1,4 @@
+{% load staticfiles %}
 <!DOCTYPE html lang="en">
 
 <html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en-US" xmlns:x2="http://www.w3.org/2002/06/xhtml2">
@@ -22,7 +23,8 @@
 		
 		<link rel="stylesheet" type="text/css" href="//cloud.typography.com/717268/708642/css/fonts.css" />
 
-		<link rel="stylesheet" href="/static/css/mobile.css">
+		<link rel="stylesheet" type="text/css" href="http://192.168.100.143:8001/mobile.css">
+		<!-- <link rel="stylesheet" href="{% static "/dotdotdash/static/css/mobile.css"%}"> -->
 
 		<script type="text/javascript">
 		WebFontConfig = {google: { families: [ 'Montserrat:700,400:latin' ] }};

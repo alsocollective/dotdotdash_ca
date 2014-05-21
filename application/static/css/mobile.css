@@ -9,7 +9,18 @@
 #d4bf44 - Yellow Accent
 
 */
-
+body * {
+	-webkit-text-rendering: optimizeLegibility;
+	-moz-text-rendering: optimizeLegibility;
+	-ms-text-rendering: optimizeLegibility;
+	-o-text-rendering: optimizeLegibility;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-font-smoothing: antialiased;
+	-ms-font-smoothing: antialiased;
+	-o-font-smoothing: antialiased;
+	font-smoothing: antialiased;
+}
 /* CUSTOM OVERRIDES FOR JQUERY MOBILE */
 	.ui-bar-a {
 		border: none;
@@ -335,6 +346,7 @@
 	}
 	.work-scection .project{
 		/*border-top: solid 2px #000;*/
+		position: relative;
 		font-weight: normal;
 		text-decoration: inherit;
 		display: inline-block;
@@ -351,7 +363,8 @@
 		color: #248183;
 	}*/
 	.work-scection .project:hover h2, .work-scection .project:hover h3,.work-scection .project:hover p{
-		color: #248183;
+		/*color: #248183;*/
+		color: #fff;
 		/*font-weight: normal;*/
 	}
 
@@ -359,31 +372,33 @@
 		color: inherit!important;
 	}
 
-	.work-scection h2,h3 {
-		margin:  0.2em 0 0.2em 0;
-		text-align: center;
+	.work-scection h2 {
+		font-family: 'Gotham A', 'Gotham B';
+		font-weight: 700;
+		font-style: normal;
+		font-size: 1.4em;
+		text-transform: uppercase;
+		margin: 0 0 0 0;
+		text-align: left;
+		color: #fff;		
+	}
+	.work-scection h3 {
+		font-family: 'Gotham A', 'Gotham B';
+		font-weight: 700;
+		font-style: normal;
+		font-size: 0.8em;
+		text-transform: uppercase;
+		margin: 0 0 0 0;
+		text-align: left;
+		color: #fff;
+
 	}
 	
 	.work-scection p {
-		margin:  0.2em 0.4em 0.2em 0.4em;
 		text-align: left;
 	}
 
-	.work-scection h1 img{
-		width: 50%;
-		max-width: 150px;
-	}
 	
-	#sos-img {
-		text-align: center;
-		margin: 0 auto 0 auto;
-	}
-	
-	#sos-img img {
-		width:35%;
-		max-width:150px;
-		padding: 0;
-	}
 	.video-link{
 		position: relative;
 	}
@@ -415,6 +430,24 @@
 	.video-link a:visited{
 		color: #333 !important;
 	}
+
+	.work-scection img{
+		width: 100%;
+		height: auto;
+	}
+	.text-content{
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+	}
+
+	.text-content{
+		padding: 1em 0 1em 3em;
+		margin-top: 2em;
+		background-color: rgba(0,0,0,0.5);
+	}
+
 	/*
 	have the content be same as desktop similar...
 	*/
